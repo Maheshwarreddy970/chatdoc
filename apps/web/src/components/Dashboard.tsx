@@ -1,21 +1,43 @@
 'use client'
 
 import { trpc } from '@/app/_trpc/client'
-import { GhostComp, UploadButton, Button } from '@repo/ui/ui'
-import Skeleton from 'react-loading-skeleton'
-import Link from 'next/link'
+import UploadButton from './UploadButton'
 import {
+  Ghost,
   Loader2,
   MessageSquare,
   Plus,
   Trash,
 } from 'lucide-react'
+import Skeleton from 'react-loading-skeleton'
+import Link from 'next/link'
 import { format } from 'date-fns'
+import { Button } from '@repo/ui/ui'
+import { useState } from 'react'
+
+
 
 const Dashboard = () => {
+  const [currentlyDeletingFile, setCurrentlyDeletingFile] =
+    useState<string | null>(null)
 
-  const { data: files, isLoading } = trpc.getUserFiles.useQuery();
+  const utils = trpc.useContext()
 
+  const { data: files, isLoading } =
+    trpc.getUserFiles.useQuery()
+
+  const { mutate: deleteFile } =
+    trpc.deleteFile.useMutation({
+      onSuccess: () => {
+        utils.getUserFiles.invalidate()
+      },
+      onMutate({ id }) {
+        setCurrentlyDeletingFile(id)
+      },
+      onSettled() {
+        setCurrentlyDeletingFile(null)
+      },
+    })
 
   return (
     <main className='mx-auto max-w-7xl md:p-10'>
@@ -23,7 +45,8 @@ const Dashboard = () => {
         <h1 className='mb-3 font-bold text-5xl text-gray-900'>
           My Files
         </h1>
-        <UploadButton></UploadButton>
+
+        <UploadButton/>
       </div>
 
       {/* display all user files */}
@@ -62,15 +85,39 @@ const Dashboard = () => {
                       'MMM yyyy'
                     )}
                   </div>
-                </div>
 
+                  <div className='flex items-center gap-2'>
+                    <MessageSquare className='h-4 w-4' />
+                    mocked
+                  </div>
+
+                  <Button
+                    onClick={() =>
+                      deleteFile({ id: file.id })
+                    }
+                    size='sm'
+                    className='w-full'
+                    variant='destructive'>
+                    {currentlyDeletingFile === file.id ? (
+                      <Loader2 className='h-4 w-4 animate-spin' />
+                    ) : (
+                      <Trash className='h-4 w-4' />
+                    )}
+                  </Button>
+                </div>
               </li>
             ))}
         </ul>
       ) : isLoading ? (
         <Skeleton height={100} className='my-2' count={3} />
       ) : (
-        <GhostComp></GhostComp>
+        <div className='mt-16 flex flex-col items-center gap-2'>
+          <Ghost className='h-8 w-8 text-zinc-800' />
+          <h3 className='font-semibold text-xl'>
+            Pretty empty around here
+          </h3>
+          <p>Let&apos;s upload your first PDF.</p>
+        </div>
       )}
     </main>
   )

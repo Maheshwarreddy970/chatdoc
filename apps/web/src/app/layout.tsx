@@ -5,7 +5,7 @@ import './globals.css'
 import { cn } from '@repo/ui/ui'
 
 import 'react-loading-skeleton/dist/skeleton.css'
-
+import 'simplebar-react/dist/simplebar.min.css'
 
 
 
