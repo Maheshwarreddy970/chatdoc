@@ -14,6 +14,8 @@ import Dropzone from 'react-dropzone'
 import { Cloud, Loader2, File } from 'lucide-react'
 import { trpc } from '@/app/_trpc/client'
 import { useRouter } from 'next/navigation'
+//import pdfindex from '@/lib/pdfindex'
+import async from '../lib/pdfindex';
 
 
 
@@ -37,7 +39,21 @@ const UploadDropzone = () => {
       retryDelay: 500,
     }
   )
-     const { mutate:fileUpload}=trpc.uploadFile.useMutation();
+  const {mutate:fileUpload}=trpc.uploadFile.useMutation(
+    {
+      async onSuccess (data,res){
+        await fetch("api/fileindex", {
+          method: "POST",
+          body: JSON.stringify({
+            res,createdFile:data
+          }),
+          headers: {
+            "content-type": "application/json",
+          },
+        }).catch((e) => console.log(e));
+      },
+    }
+  );
 
   const startSimulatedProgress = () => {
     setUploadProgress(0)
@@ -65,7 +81,7 @@ const UploadDropzone = () => {
 
         // handle file uploading
         const res = await uploadToS3(acceptedFile);
-        fileUpload({
+       const createdFile= fileUpload({
           filekey: res.file_key,
           name: res.file_name,
           url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.ap-south-1.amazonaws.com/${res.file_key}`
@@ -77,8 +93,6 @@ const UploadDropzone = () => {
             variant: 'destructive',
           })
         }
-
-
         const key = res?.file_key;
         clearInterval(progressInterval)
         setUploadProgress(100)
