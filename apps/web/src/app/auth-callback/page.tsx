@@ -7,7 +7,6 @@ import { useEffect } from 'react'
 
 const Page = () => {
   const router = useRouter()
-
   const searchParams = useSearchParams()
   const origin = searchParams.get('origin')
 
@@ -18,7 +17,7 @@ const Page = () => {
   }
   if(error){
     if (error.data?.code === 'UNAUTHORIZED') {
-      router.push('/sign-in')
+      router.push('/')
     }}
   useEffect(()=>{
   })

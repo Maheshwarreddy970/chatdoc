@@ -1,13 +1,19 @@
 import { Send } from 'lucide-react'
-import { Button ,Textarea} from '@repo/ui/ui'
+import { Button,Textarea } from '@repo/ui/ui'
 import { useContext, useRef } from 'react'
-//import { ChatContext } from './ChatContext'
+import { ChatContext } from './ChatContext'
 
 interface ChatInputProps {
   isDisabled?: boolean
 }
 
 const ChatInput = ({ isDisabled }: ChatInputProps) => {
+  const {
+    addMessage,
+    handleInputChange,
+    isLoading,
+    message,
+  } = useContext(ChatContext)
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -21,11 +27,14 @@ const ChatInput = ({ isDisabled }: ChatInputProps) => {
                 rows={1}
                 ref={textareaRef}
                 autoFocus
-                onKeyDown={(e) => {
+                onChange={handleInputChange}
+                value={message}
+                onKeyDown={(e:any) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault()
 
-
+                    addMessage()
+                    
                     textareaRef.current?.focus()
                   }
                 }}
@@ -34,10 +43,11 @@ const ChatInput = ({ isDisabled }: ChatInputProps) => {
               />
 
               <Button
-                disabled={isDisabled}
+                disabled={isLoading || isDisabled}
                 className='absolute bottom-1.5 right-[8px]'
                 aria-label='send message'
                 onClick={() => {
+                  addMessage()
 
                   textareaRef.current?.focus()
                 }}>

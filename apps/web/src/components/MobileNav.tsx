@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Menu } from 'lucide-react'
+import { ArrowRight, LogOut, Menu } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -82,11 +82,7 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
                 </li>
                 <li className='my-3 h-px w-full bg-gray-300' />
                 <li>
-                  <Link
-                    className='flex items-center w-full font-semibold'
-                    href='/sign-out'>
-                    Sign out
-                  </Link>
+                <Link href={'/'} className='w-full text-red-700 flex justify-between'><span>Log out</span> <LogOut className='w-4  text-red-700 h-4'></LogOut></Link>
                 </li>
               </>
             )}

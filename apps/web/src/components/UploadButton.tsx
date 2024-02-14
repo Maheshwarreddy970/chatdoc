@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Dialog,
   DialogContent,
@@ -28,8 +28,6 @@ const UploadDropzone = () => {
     useState<number>(0)
   const { toast } = useToast()
 
-
-
   const { mutate: startPolling } = trpc.getFile.useMutation(
     {
       onSuccess: (file: any) => {
@@ -39,21 +37,19 @@ const UploadDropzone = () => {
       retryDelay: 500,
     }
   )
-  const {mutate:fileUpload}=trpc.uploadFile.useMutation(
-    {
-      async onSuccess (data,res){
-        await fetch("api/fileindex", {
-          method: "POST",
-          body: JSON.stringify({
-            res,createdFile:data
-          }),
-          headers: {
-            "content-type": "application/json",
-          },
-        }).catch((e) => console.log(e));
-      },
+  const { mutate: fileUpload } = trpc.uploadFile.useMutation({
+    onSuccess: async (data: any) => {
+      await fetch("api/fileindex", {
+        method: "POST",
+        body: JSON.stringify({
+          createdFile:data
+        }),
+        headers: {
+          "content-type": "application/json",
+        },
+      }).catch((e) => console.log(e));
     }
-  );
+  });
 
   const startSimulatedProgress = () => {
     setUploadProgress(0)
@@ -70,18 +66,25 @@ const UploadDropzone = () => {
 
     return interval
   }
-
   return (
     <Dropzone
       multiple={false}
-      onDrop={async (acceptedFile) => {
+      onDrop={async (acceptedFile: any) => {
         setIsUploading(true)
 
         const progressInterval = startSimulatedProgress()
-
+        if (acceptedFile.size > 10 * 1024 * 1024) {
+          // bigger than 10mb!
+          return toast({
+            title:"file is lagre in size",
+            description:"upload file less then 10mb",
+            variant:"destructive"
+          });
+        }
         // handle file uploading
         const res = await uploadToS3(acceptedFile);
-       const createdFile= fileUpload({
+
+        await fileUpload({
           filekey: res.file_key,
           name: res.file_name,
           url: `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.ap-south-1.amazonaws.com/${res.file_key}`
@@ -94,9 +97,10 @@ const UploadDropzone = () => {
           })
         }
         const key = res?.file_key;
+
+
         clearInterval(progressInterval)
         setUploadProgress(100)
-
         startPolling({ key })
       }}>
       {({ getRootProps, getInputProps, acceptedFiles }) => (
@@ -116,7 +120,7 @@ const UploadDropzone = () => {
                   or drag and drop
                 </p>
                 <p className='text-xs text-zinc-500'>
-                  PDF up to 16 MB
+                  PDF up to 10 MB
                 </p>
               </div>
 
@@ -179,7 +183,7 @@ const UploadButton = () => {
       <DialogTrigger
         onClick={() => setIsOpen(true)}
         asChild>
-        <Button>Upload PDF</Button>
+        <Button className='bg-gradient-to-br sm:w-48 from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg'>Upload PDF</Button>
       </DialogTrigger>
 
       <DialogContent>

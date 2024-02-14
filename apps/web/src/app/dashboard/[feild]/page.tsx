@@ -1,32 +1,28 @@
 import ChatWrapper from '@/components/chat/ChatWrapper'
-//import PdfRenderer from '@/components/PdfRenderer'
 import { db } from '@repo/database/dbconnect'
-//import { getUserSubscriptionPlan } from '@/lib/stripe'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { notFound, redirect } from 'next/navigation'
 import PdfRenderer from '@/components/PdfRenderer'
 interface PageProps {
   params: {
-    fileid: string
+    feild: string
   }
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { fileid } = params
-
+  const { feild } = params
   const { getUser } = getKindeServerSession()
   const user = await getUser()
 
   if (!user || !user.id)
-    redirect(`/auth-callback?origin=dashboard/${fileid}`)
-
+    redirect(`/auth-callback?origin=dashboard/${feild}`)
   const file = await db.file.findFirst({
     where: {
-      id: fileid,
+      id: feild,
       userId: user.id,
     },
   })
-
+  
   if (!file) notFound()
 
 

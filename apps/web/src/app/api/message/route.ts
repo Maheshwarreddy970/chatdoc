@@ -2,7 +2,7 @@ import { db } from '@repo/database/dbconnect'
 import { SendMessageValidator } from '@/lib/validators/SendMessageValidator'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
-import { PineconeStore } from 'langchain/vectorstores/pinecone'
+import { PineconeStore } from '@langchain/pinecone'
 import { NextRequest } from 'next/server'
 import { getPineconeClient } from '@/lib/pinecone'
 import { openai } from '@/lib/opeanai'
@@ -24,8 +24,7 @@ export const POST = async (req:NextRequest) => {
   if (!userId)
     return new Response('Unauthorized', { status: 401 })
 
-  const { fileId, message } =
-    SendMessageValidator.parse(body)
+  const { fileId, message } =SendMessageValidator.parse(body)
 
   const file = await db.file.findFirst({
     where: {
@@ -36,7 +35,6 @@ export const POST = async (req:NextRequest) => {
 
   if (!file)
     return new Response('Not found', { status: 404 })
-
   await db.message.create({
     data: {
       text: message,
@@ -52,7 +50,7 @@ export const POST = async (req:NextRequest) => {
   })
 
   const pinecone = await getPineconeClient()
-  const pineconeIndex = pinecone.Index('quill')
+  const pineconeIndex = pinecone.Index('chardoc')
 
   const vectorStore = await PineconeStore.fromExistingIndex(
     embeddings,

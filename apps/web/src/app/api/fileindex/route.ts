@@ -4,33 +4,30 @@ import { OpenAIEmbeddings } from '@langchain/openai'
 import { PineconeStore } from '@langchain/pinecone'
 import { getPineconeClient } from '@/lib/pinecone'
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { constants } from 'buffer';
+import { ConfigureIndexRequestSpecToJSON } from '@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch';
 //import { WebPDFLoader} from "langchain/document_loaders/web/pdf";
 
 
-
 export const POST = async (req: NextRequest) => {
-  const { res, createdFile } = await req.json()
+  const { createdFile } = await req.json()
+  if (!createdFile.id) return;
   try {
-    const response = await fetch(
-      ` https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.ap-south-1.amazonaws.com/${res.file_key}`
-    )
-
+    const response = await fetch(createdFile.url)
     const blob = await response.blob()
     //@ts-ignore
     const loader = new PDFLoader(blob)
-    
+
     const pageLevelDocs = await loader.load()
-    
-    //const pagesAmt = pageLevelDocs.length
+    const pagesAmt = pageLevelDocs.length
     // vectorize and index entire document
     const pinecone = await getPineconeClient()
-    const pineconeIndex = pinecone.index('chardoc')
+    const pineconeIndex = pinecone.Index('chardoc')
+
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,
     })
-    console.log("pdfloading")
 
     await PineconeStore.fromDocuments(
       pageLevelDocs,
@@ -41,7 +38,6 @@ export const POST = async (req: NextRequest) => {
         namespace: createdFile.id,
       }
     )
-    console.log("pdf uploaded")
     await db.file.update({
       data: {
         uploadStatus: 'SUCCESS',
@@ -60,4 +56,7 @@ export const POST = async (req: NextRequest) => {
       },
     })
   }
+  return NextResponse.json({
+    message: "ok"
+  }, { status: 200 })
 }

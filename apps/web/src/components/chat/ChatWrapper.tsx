@@ -17,15 +17,20 @@ const ChatWrapper = ({
   fileId,
   isSubscribed,
 }: ChatWrapperProps) => {
-  const { data, isLoading } =trpc.getFileUploadStatus.useQuery(
+  const { data, isLoading } =
+    trpc.getFileUploadStatus.useQuery(
       {
         fileId,
       },
       {
-        refetchInterval: (data) =>
-        data?.status === 'SUCCESS' || data?.status === "FAILED" ? false: 500,
+        refetchInterval: (data:any) =>
+          data?.status === 'SUCCESS' ||
+          data?.status === 'FAILED'
+            ? false
+            : 500,
       }
-      )
+    )
+
   if (isLoading)
     return (
       <div className='relative min-h-full bg-zinc-50 flex divide-y divide-zinc-200 flex-col justify-between gap-2'>
@@ -78,7 +83,7 @@ const ChatWrapper = ({
               <span className='font-medium'>
                 {isSubscribed ? 'Pro' : 'Free'}
               </span>{' '}
-              plan supports up to{' '}
+              plan supports up to{' '}{' '}
               pages per PDF.
             </p>
             <Link
@@ -101,6 +106,7 @@ const ChatWrapper = ({
     <ChatContextProvider fileId={fileId}>
       <div className='relative min-h-full bg-zinc-50 flex divide-y divide-zinc-200 flex-col justify-between gap-2'>
         <div className='flex-1 justify-between flex flex-col mb-28'>
+          <Messages fileId={fileId} />
         </div>
         <ChatInput />
       </div>
@@ -109,3 +115,4 @@ const ChatWrapper = ({
 }
 
 export default ChatWrapper
+

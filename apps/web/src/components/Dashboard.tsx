@@ -14,7 +14,7 @@ import Link from 'next/link'
 import { format } from 'date-fns'
 import { Button } from '@repo/ui/ui'
 import { useState } from 'react'
-
+import {deletefroms3} from "@/lib/s3"
 
 
 const Dashboard = () => {
@@ -28,7 +28,8 @@ const Dashboard = () => {
 
   const { mutate: deleteFile } =
     trpc.deleteFile.useMutation({
-      onSuccess: () => {
+      onSuccess: async(file) => {
+         deletefroms3(file.key)
         utils.getUserFiles.invalidate()
       },
       onMutate({ id }) {
@@ -41,12 +42,13 @@ const Dashboard = () => {
 
   return (
     <main className='mx-auto max-w-7xl md:p-10'>
-      <div className='mt-8 flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0'>
-        <h1 className='mb-3 font-bold text-5xl text-gray-900'>
+      <div className='mt-8 mb-5 flex flex-col items-start gap-4 justify-center sm:justify-between border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0'>
+        <h1 className='mb-4 font-bold text-5xl bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-pink-500'>
           My Files
         </h1>
-
+        <div className='flex justify-end'>
         <UploadButton/>
+        </div>
       </div>
 
       {/* display all user files */}
@@ -111,12 +113,12 @@ const Dashboard = () => {
       ) : isLoading ? (
         <Skeleton height={100} className='my-2' count={3} />
       ) : (
-        <div className='mt-16 flex flex-col items-center gap-2'>
-          <Ghost className='h-8 w-8 text-zinc-800' />
-          <h3 className='font-semibold text-xl'>
-            Pretty empty around here
+        <div className='mt-16 flex flex-col items-center gap-2 '>
+          <Ghost className='h-8 w-8 text-black' />
+          <h3 className='text-black'>
+          Not much activity around here
           </h3>
-          <p>Let&apos;s upload your first PDF.</p>
+          <p className='text-black'>Let&apos;s Ready to upload your first PDF.</p>
         </div>
       )}
     </main>
