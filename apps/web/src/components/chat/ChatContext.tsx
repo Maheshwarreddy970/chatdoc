@@ -78,7 +78,7 @@ export const ChatContextProvider = ({
       // step 3
       utils.getFileMessages.setInfiniteData(
         { fileId, limit: INFINITE_QUERY_LIMIT },
-        (old) => {
+        (old:any) => {
           if (!old) {
             return {
               pages: [],

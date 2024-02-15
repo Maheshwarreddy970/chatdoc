@@ -22,7 +22,7 @@ const Navbar = async () => {
           <Link
             href='/dashboard'
             className='flex justify-center z-40 font-semibold'>
-              <Image src={logo} alt="logo" className='h-11 w-11'></Image>
+              <Image src={logo} alt="logo" className='h-11 w-11 hover:animate-spin'></Image>
           </Link>
 
           <MobileNav isAuth={!!user} />
@@ -30,14 +30,6 @@ const Navbar = async () => {
           <div className='hidden items-center space-x-4 sm:flex'>
             {!user ? (
               <>
-                <Link
-                  href='/pricing'
-                  className={buttonVariants({
-                    variant: 'ghost',
-                    size: 'sm',
-                  })}>
-                  Pricing
-                </Link>
                 <LoginLink
                   className={buttonVariants({
                     variant: 'ghost',
@@ -48,6 +40,7 @@ const Navbar = async () => {
                 <RegisterLink
                   className={buttonVariants({
                     size: 'sm',
+                    className:'bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800'
                   })}>
                   Get started{' '}
                   <ArrowRight className='ml-1.5 h-5 w-5' />

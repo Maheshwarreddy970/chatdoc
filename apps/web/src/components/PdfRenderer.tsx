@@ -97,7 +97,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             }}
             variant='ghost'
             aria-label='previous page'>
-            <ChevronDown className='h-4 w-4' />
+            <ChevronUp className='h-4 w-4' />
           </Button>
 
           <div className='flex items-center gap-1.5'>
@@ -132,7 +132,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             }}
             variant='ghost'
             aria-label='next page'>
-            <ChevronUp className='h-4 w-4' />
+            <ChevronDown className='h-4 w-4' />
           </Button>
         </div>
 
@@ -187,7 +187,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             <Document
               loading={
                 <div className='flex justify-center'>
-                  <Loader2 className='my-24 h-6 w-6 animate-spin' />
+                  <Loader2 className='text-slate-950 my-24 h-6 w-6 animate-spin' />
                 </div>
               }
               onLoadError={() => {
@@ -221,7 +221,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
                 key={'@' + scale}
                 loading={
                   <div className='flex justify-center'>
-                    <Loader2 className='my-24 h-6 w-6 animate-spin' />
+                    <Loader2 className='text-slate-950 my-24 h-6 w-6 animate-spin' />
                   </div>
                 }
                 onRenderSuccess={() =>

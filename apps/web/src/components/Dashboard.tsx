@@ -68,7 +68,7 @@ const Dashboard = () => {
                   href={`/dashboard/${file.id}`}
                   className='flex flex-col gap-2'>
                   <div className='pt-6 px-6 flex w-full items-center justify-between space-x-6'>
-                    <div className='h-10 w-10 flex-shrink-0 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500' />
+                    <div className='h-10 w-10 flex-shrink-0 rounded-full bg-gradient-to-r from-slate-500 to-slate-800' />
                     <div className='flex-1 truncate'>
                       <div className='flex items-center space-x-3'>
                         <h3 className='truncate text-lg font-medium text-zinc-900'>
@@ -98,12 +98,12 @@ const Dashboard = () => {
                       deleteFile({ id: file.id })
                     }
                     size='sm'
-                    className='w-full'
+                    className='w-full bg-transparent hover:bg-red-100'
                     variant='destructive'>
                     {currentlyDeletingFile === file.id ? (
-                      <Loader2 className='h-4 w-4 animate-spin' />
+                      <Loader2 className='h-4 w-4 bg-zinc-950 animate-spin' />
                     ) : (
-                      <Trash className='h-4 w-4' />
+                      <Trash className='h-4 w-4 text-red-500' />
                     )}
                   </Button>
                 </div>

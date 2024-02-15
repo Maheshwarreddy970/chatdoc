@@ -38,7 +38,7 @@ const Messages = ({ fileId }: MessagesProps) => {
     isUserMessage: false,
     text: (
       <span className='flex h-full items-center justify-center'>
-        <Loader2 className='h-4 w-4 animate-spin' />
+        <Loader2 className='h-4 w-4 animate-spin text-slate-950' />
       </span>
     ),
   }
@@ -62,7 +62,7 @@ const Messages = ({ fileId }: MessagesProps) => {
   }, [entry, fetchNextPage])
 
   return (
-    <div className='flex max-h-[calc(100vh-3.5rem-7rem)] border-zinc-200 flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch'>
+    <div className='flex max-h-[calc(100vh-3.5rem-7rem)] border-zinc-200 flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scrollbar-thumb-black scrollbar-thumb-rounded scrollbar-track-black-lighter scrollbar-w-2 scrolling-touch'>
       {combinedMessages && combinedMessages.length > 0 ? (
         combinedMessages.map((message, i) => {
           const isNextMessageSamePerson =
@@ -100,7 +100,7 @@ const Messages = ({ fileId }: MessagesProps) => {
         </div>
       ) : (
         <div className='flex-1 flex flex-col items-center justify-center gap-2'>
-          <MessageSquare className='h-8 w-8 text-blue-500' />
+          <MessageSquare className='h-8 w-8 text-zinc-950' />
           <h3 className='font-semibold text-xl'>
             You&apos;re all set!
           </h3>

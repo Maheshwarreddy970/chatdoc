@@ -127,7 +127,7 @@ const UploadDropzone = () => {
               {acceptedFiles && acceptedFiles[0] ? (
                 <div className='max-w-xs bg-white flex items-center rounded-md overflow-hidden outline outline-[1px] outline-zinc-200 divide-x divide-zinc-200'>
                   <div className='px-3 py-2 h-full grid place-items-center'>
-                    <File className='h-4 w-4 text-blue-500' />
+                    <File className='h-4 w-4 text-zinc-900' />
                   </div>
                   <div className='px-3 py-2 h-full text-sm truncate'>
                     {acceptedFiles[0].name}
@@ -148,7 +148,7 @@ const UploadDropzone = () => {
                   />
                   {uploadProgress === 100 ? (
                     <div className='flex gap-1 items-center justify-center text-sm text-zinc-700 text-center pt-2'>
-                      <Loader2 className='h-3 w-3 animate-spin' />
+                      <Loader2 className='text-slate-950 h-3 w-3 animate-spin' />
                       Redirecting...
                     </div>
                   ) : null}
@@ -183,7 +183,7 @@ const UploadButton = () => {
       <DialogTrigger
         onClick={() => setIsOpen(true)}
         asChild>
-        <Button className='bg-gradient-to-br sm:w-48 from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg'>Upload PDF</Button>
+        <Button className='bg-gradient-to-br sm:w-48 from-green-400 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg'>Upload PDF</Button>
       </DialogTrigger>
 
       <DialogContent>

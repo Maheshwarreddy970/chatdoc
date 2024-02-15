@@ -3,13 +3,8 @@ import Providers from '@/components/Providers'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { cn } from '@repo/ui/ui'
-import { SessionProvider } from "next-auth/react"
-import type { AppProps } from "next/app"
 import 'react-loading-skeleton/dist/skeleton.css'
 import 'simplebar-react/dist/simplebar.min.css'
-import { PageProps } from '../../.next/types/app/page';
-import { AppRouter } from '../../../../packages/trpc/index';
-import AuthProvider from '@/components/AuthProvider'
 
 
 

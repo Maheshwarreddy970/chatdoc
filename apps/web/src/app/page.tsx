@@ -6,14 +6,15 @@ import { buttonVariants } from '@repo/ui/ui';
 import { ArrowRight } from 'lucide-react'
 import logo from "../../public/sketch1704618933812two - Copy.png"
 import { TypewriterTitle,TypeWrit} from "@repo/ui/ui";
-
+import dashboard_preview from "../../public/dashboard-preview.png"
+import file_upload_preview from "../../public/file-upload-preview.png"
 
 export default function Home() {
   return (
     <>
       <MaxWidthWrapper className='mb-12 mt-20 sm:mt-28 flex flex-col items-center justify-center text-center'>
         <div className="flex justify-center align-center">
-          <Image src={logo} alt="logo" className="h-2/5 w-2/5 hover:animate-spin"></Image>
+          <Image src={logo} alt="logo" className="h-2/5 w-2/5"></Image>
         </div>
         <h1 className='max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl'>
           Chat with your{' '}
@@ -52,14 +53,14 @@ export default function Home() {
           <div>
             <div className='mx-auto max-w-6xl px-6 lg:px-8'>
               <div className='mt-16 flow-root sm:mt-24'>
-                <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
+                <div className='-m-2 rounded-xl bg-gray-900/5 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
                   <Image
-                    src='/dashboard-preview.jpg'
+                    src={dashboard_preview}
                     alt='product preview'
-                    width={1364}
-                    height={866}
+                    width={1464}
+                    height={966}
                     quality={100}
-                    className='rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10'
+                    className='rounded-md bg-white p-2 sm:p-2 md:p-5 shadow-2xl ring-1 ring-gray-900/10'
                   />
                 </div>
               </div>
@@ -98,27 +99,20 @@ export default function Home() {
         <ol className='my-8 space-y-4 pt-8 md:flex md:space-x-12 md:space-y-0'>
           <li className='md:flex-1'>
             <div className='flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
-              <span className='animate-bounce text-sm font-medium text-blue-700'>
+              <span className='animate-bounce text-sm font-medium text-zinc-900'>
                 Step 1
               </span>
               <span className='text-xl font-semibold'>
                 Sign up for an account
               </span>
               <span className='mt-2 text-zinc-700'>
-                Either starting out with a free plan or
-                choose our{' '}
-                <Link
-                  href='/pricing'
-                  className='text-blue-700 underline underline-offset-2'>
-                  pro plan
-                </Link>
-                .
+                Either starting out for free .
               </span>
             </div>
           </li>
           <li className='md:flex-1'>
             <div className='flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
-              <span className='animate-bounce text-sm font-medium text-blue-600'>
+              <span className='animate-bounce text-sm font-medium text-blue-500'>
                 Step 2
               </span>
               <span className='text-xl font-semibold'>
@@ -132,7 +126,7 @@ export default function Home() {
           </li>
           <li className='md:flex-1'>
             <div className='flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
-              <span className='animate-bounce text-sm font-medium text-blue-600'>
+              <span className='animate-bounce text-sm font-medium text-zinc-900'>
                 Step 3
               </span>
               <span className='text-xl font-semibold'>
@@ -150,12 +144,12 @@ export default function Home() {
           <div className='mt-16 flow-root sm:mt-24'>
             <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
               <Image
-                src='/file-upload-preview.jpg'
+                src={file_upload_preview}
                 alt='uploading preview'
                 width={1419}
                 height={732}
                 quality={100}
-                className='rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10'
+                className='rounded-md bg-white shadow-2xl ring-1 ring-gray-900/10'
               />
             </div>
           </div>
