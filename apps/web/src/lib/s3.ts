@@ -1,5 +1,4 @@
 import { S3 } from "@aws-sdk/client-s3";
-import * as AWS from 'aws-sdk';
 
 export async function uploadToS3(
   file: any
@@ -41,7 +40,7 @@ export async function deletefroms3(
 ): Promise< {}> {
   return new Promise((resolve, reject) => {
     try {
-      const s3 = new AWS.S3({
+      const s3 = new S3({
         region: "ap-south-1",
         credentials: {
           accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID!,
@@ -53,7 +52,7 @@ export async function deletefroms3(
         Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME!,
         Key: file_path,
       };
-      s3.deleteObject (params, (err, data) => {
+      s3.deleteObject (params, (err:any, data:any) => {
         if (err) {
           console.error('Error deleting object:', err);
         } else {

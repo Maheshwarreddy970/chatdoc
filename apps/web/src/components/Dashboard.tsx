@@ -29,7 +29,7 @@ const Dashboard = () => {
   const { mutate: deleteFile } =
     trpc.deleteFile.useMutation({
       onSuccess: async(file) => {
-         deletefroms3(file.key)
+          deletefroms3(file.key);
         utils.getUserFiles.invalidate()
       },
       onMutate({ id }) {

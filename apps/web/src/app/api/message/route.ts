@@ -4,7 +4,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { PineconeStore } from '@langchain/pinecone'
 import { NextRequest } from 'next/server'
-import { getPineconeClient } from '@/lib/pinecone'
+import { pinecone } from '@/lib/pinecone'
 import { openai } from '@/lib/opeanai'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 
@@ -49,8 +49,7 @@ export const POST = async (req:NextRequest) => {
     openAIApiKey: process.env.OPENAI_API_KEY,
   })
 
-  const pinecone = await getPineconeClient()
-  const pineconeIndex = pinecone.Index('chardoc')
+  const pineconeIndex = pinecone.Index('chatdocai')
 
   const vectorStore = await PineconeStore.fromExistingIndex(
     embeddings,

@@ -5,7 +5,6 @@ import React from 'react'
 import Sign_up from '@/components/Sign_up'
 import logo from '../../../public/sketch1704618933812two - Copy.png'
 import Image from 'next/image'
-import { useForm, SubmitHandler } from "react-hook-form"
 
 
 

@@ -90,7 +90,7 @@ export default function Home() {
             </h2>
             <TypeWrit className='mt-4 text-lg text-gray-600'>
               Chatting to your PDF files has never been
-              easier than with Chatdoc.
+              easier than with Chatdocai.
             </TypeWrit>
           </div>
         </div>

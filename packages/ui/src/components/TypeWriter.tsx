@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Children, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import Typewriter from "typewriter-effect";
 
 type Props = {
@@ -17,7 +17,7 @@ export const TypewriterTitle = () => {
         }}
         onInit={(typewriter) => {
           typewriter
-            .typeString("Chatdoc allows you to have conversations with any PDF document.")
+            .typeString("Chatdocai allows you to have conversations with any PDF document.")
             .pauseFor(500)
             .deleteAll()
             .typeString("Simply upload your file and start asking questions right away.")

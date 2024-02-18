@@ -8,7 +8,6 @@ import { useToast } from '@repo/ui/ui'
 import { useMutation } from '@tanstack/react-query'
 import { trpc } from '@/app/_trpc/client'
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query'
-import async from '../../lib/pdfindex';
 
 type StreamResponse = {
   addMessage: () => void

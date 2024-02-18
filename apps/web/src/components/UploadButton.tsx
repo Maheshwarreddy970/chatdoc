@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import {useState } from 'react'
 import {
   Dialog,
   DialogContent,
@@ -14,20 +14,16 @@ import Dropzone from 'react-dropzone'
 import { Cloud, Loader2, File } from 'lucide-react'
 import { trpc } from '@/app/_trpc/client'
 import { useRouter } from 'next/navigation'
-//import pdfindex from '@/lib/pdfindex'
-import async from '../lib/pdfindex';
 
 
 
 const UploadDropzone = () => {
-  const router = useRouter()
-
+  const router = useRouter();
   const [isUploading, setIsUploading] =
     useState<boolean>(false)
   const [uploadProgress, setUploadProgress] =
     useState<number>(0)
   const { toast } = useToast()
-
   const { mutate: startPolling } = trpc.getFile.useMutation(
     {
       onSuccess: (file: any) => {

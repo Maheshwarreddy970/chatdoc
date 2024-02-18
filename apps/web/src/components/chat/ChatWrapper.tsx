@@ -3,8 +3,6 @@
 import { trpc } from '@/app/_trpc/client'
 import ChatInput from './ChatInput'
 import Messages from './Messages'
-import { ChevronLeft, Loader2, XCircle } from 'lucide-react'
-import Link from 'next/link'
 import {ChatWrapperFailed,ChatWrapperisLoading,ChatWrapperProcessing} from '@repo/ui/ui'
 import {ChatContextProvider} from "./ChatContext"
 

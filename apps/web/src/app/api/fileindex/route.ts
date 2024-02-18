@@ -5,9 +5,6 @@ import { PineconeStore } from '@langchain/pinecone'
 import { pinecone } from '@/lib/pinecone'
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { NextRequest, NextResponse } from 'next/server';
-import { constants } from 'buffer';
-import { ConfigureIndexRequestSpecToJSON } from '@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch';
-import { WebPDFLoader} from "langchain/document_loaders/web/pdf";
 
 export const POST = async (req: NextRequest) => {
   const { createdFile } = await req.json()
@@ -24,17 +21,14 @@ export const POST = async (req: NextRequest) => {
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,
     })
-   const res= await PineconeStore.fromDocuments(
+    const res=await PineconeStore.fromDocuments(
       pageLevelDocs,
       embeddings,
       {
         //@ts-ignore
         pineconeIndex,
         namespace: createdFile.id,
-      }
-    )
-    console.log(res)
-    console.log("pinecoineupload")
+      })
     await db.file.update({
       data: {
         uploadStatus: 'SUCCESS',
@@ -44,7 +38,6 @@ export const POST = async (req: NextRequest) => {
       },
     })
   } catch (err) {
-    console.log(err)
     await db.file.update({
       data: {
         uploadStatus: 'FAILED',

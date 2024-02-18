@@ -37,7 +37,7 @@
     "i": "^0.3.7",
     "langchain": "^0.1.17",
     "lucide-react": "^0.312.0",
-    "next": "14.1.0",
+    "next": "^14.1.0",
     "next-auth": "^4.24.5",
     "next-transpile-modules": "^10.0.1",
     "npm": "^10.3.0",
