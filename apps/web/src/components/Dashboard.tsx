@@ -101,7 +101,7 @@ const Dashboard = () => {
                     className='w-full bg-transparent hover:bg-red-100'
                     variant='destructive'>
                     {currentlyDeletingFile === file.id ? (
-                      <Loader2 className='h-4 w-4 bg-zinc-950 animate-spin' />
+                      <Loader2 className='h-4 w-4 text-red-500 animate-spin' />
                     ) : (
                       <Trash className='h-4 w-4 text-red-500' />
                     )}

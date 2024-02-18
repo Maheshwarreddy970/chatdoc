@@ -36,7 +36,6 @@ export const appRouter = router({
         }
       })
     }
-    console.log(userval)
     return {success:true}
   }),
   

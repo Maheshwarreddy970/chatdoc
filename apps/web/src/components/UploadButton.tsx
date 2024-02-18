@@ -83,7 +83,6 @@ const UploadDropzone = () => {
         }
         // handle file uploading
         const res = await uploadToS3(acceptedFile);
-
         await fileUpload({
           filekey: res.file_key,
           name: res.file_name,

@@ -1,4 +1,4 @@
-import { PutObjectCommandOutput, S3 } from "@aws-sdk/client-s3";
+import { S3 } from "@aws-sdk/client-s3";
 import * as AWS from 'aws-sdk';
 
 export async function uploadToS3(
@@ -13,16 +13,16 @@ export async function uploadToS3(
           secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY!,
         },
       });
-      const file_key ="uploads/" + Date.now().toString() + file[0].name.replace(" ", "-");
-
+      let file_key ="uploads/" + Date.now().toString() + file[0].name.replaceAll(' ','_');
+      //file_key=encodeURIComponent(file_key)
       const params = {
         Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME!,
         Key: file_key,
         Body: file[0],
       };
-      s3.putObject(
+      const res=s3.putObject(
         params,
-        (err: any, data: PutObjectCommandOutput | undefined) => {
+        () => {
           return resolve({
             file_key,
             file_name: file[0].name,
