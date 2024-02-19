@@ -4,16 +4,29 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "env": [
+        "SOME_ENV_VAR"
+      ]
     },
     "lint": {},
     "type-check": {},
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": [
+      ]
     },
     "clean": {
       "cache": false
+    },
+    "vercel-deploy": {
+      "dependsOn": ["^build"],
+      "env": [
+      ],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "secrets": [
+      ]
     }
   }
 }

@@ -65,7 +65,21 @@ export const POST = async (req:NextRequest) => {
     4
   )
 
-  const prevMessages = await db.message.findMany({
+  interface Message {
+    id: string;
+    text: string;
+    isUserMessage: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+    userId: string | null;
+    fileId: string | null;
+  }
+  
+
+  
+  // Update the map function using the Message interface
+  
+  const prevMessages:Message[] = await db.message.findMany({
     where: {
       fileId,
     },
@@ -75,12 +89,17 @@ export const POST = async (req:NextRequest) => {
     take: 6,
   })
 
-  const formattedPrevMessages = prevMessages.map((msg) => ({
-    role: msg.isUserMessage
-      ? ('user' as const)
-      : ('assistant' as const),
+  interface FormattedMessage {
+    role: 'user' | 'assistant';
+    content: string;
+  }
+  
+  // Usage:
+  const formattedPrevMessages: FormattedMessage[] = prevMessages.map((msg:Message) => ({
+    role: msg.isUserMessage ? 'user' : 'assistant',
     content: msg.text,
-  }))
+  }));
+
 
   const response = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
