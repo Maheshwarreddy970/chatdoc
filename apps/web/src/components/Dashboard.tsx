@@ -15,7 +15,7 @@ import { format } from 'date-fns'
 import { Button } from '@repo/ui/ui'
 import { useState } from 'react'
 import {deletefroms3} from "@/lib/s3"
-
+import { FileType } from '@repo/trpc/types'
 
 const Dashboard = () => {
   const [currentlyDeletingFile, setCurrentlyDeletingFile] =
@@ -23,8 +23,10 @@ const Dashboard = () => {
 
   const utils = trpc.useContext()
 
-  const { data: files, isLoading } =
+  const { data, isLoading } =
     trpc.getUserFiles.useQuery()
+
+  const files:FileType[]|undefined=data
 
   const { mutate: deleteFile } =
     trpc.deleteFile.useMutation({
@@ -37,8 +39,10 @@ const Dashboard = () => {
       },
       onSettled() {
         setCurrentlyDeletingFile(null)
-      },
+    },
     })
+
+
 
   return (
     <main className='mx-auto max-w-7xl md:p-10'>
@@ -56,11 +60,11 @@ const Dashboard = () => {
         <ul className='mt-8 grid grid-cols-1 gap-6 divide-y divide-zinc-200 md:grid-cols-2 lg:grid-cols-3'>
           {files
             .sort(
-              (a, b) =>
+              (a:FileType, b:FileType) =>
                 new Date(b.createdAt).getTime() -
                 new Date(a.createdAt).getTime()
             )
-            .map((file) => (
+            .map((file:FileType) => (
               <li
                 key={file.id}
                 className='col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow transition hover:shadow-lg'>

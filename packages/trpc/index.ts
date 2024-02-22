@@ -9,6 +9,7 @@ import { db } from '../database/dbconnect'
 import { z } from 'zod'
 import {FileuploadInput} from './zod/filetypes'
 import { INFINITE_QUERY_LIMIT } from './config/infinite-query'
+import { FileType } from './zod/filetypes'
 
 export const appRouter = router({
   authCallback: publicProcedure
@@ -47,7 +48,7 @@ export const appRouter = router({
     })
   }),
 
-  getUserFiles: privateProcedure.query(async ({ ctx }) => {
+  getUserFiles: privateProcedure.query(async ({ ctx}) => {
     const { userId } = ctx
 
     return await db.file.findMany({
@@ -56,7 +57,7 @@ export const appRouter = router({
       },
     })
   }),
-
+  
   getFileUploadStatus: privateProcedure
     .input(z.object({ fileId: z.string() }))
     .query(async ({ input, ctx }) => {
