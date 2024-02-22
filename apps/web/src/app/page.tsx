@@ -1,15 +1,16 @@
+'use client'
 
 import Image from "next/image";
 import { MaxWidthWrapper } from "@repo/ui/ui";
 import Link from 'next/link'
 import { buttonVariants } from '@repo/ui/ui';
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react';
 import logo from "../../public/sketch1704618933812two - Copy.png"
 import { TypewriterTitle,TypeWrit} from "@repo/ui/ui";
 import dashboard_preview from "../../public/dashboard-preview.png"
 import file_upload_preview from "../../public/file-upload-preview.png"
 
-export default function Home() {
+export default function Home () {
   return (
     <>
       <MaxWidthWrapper className='mb-12 mt-20 sm:mt-28 flex flex-col items-center justify-center text-center'>

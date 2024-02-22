@@ -7,6 +7,7 @@ import { useContext, useEffect, useRef } from 'react'
 import { ChatContext } from './ChatContext'
 import { useIntersection } from '@mantine/hooks'
 
+
 interface MessagesProps {
   fileId: string
 }
@@ -28,8 +29,8 @@ const Messages = ({ fileId }: MessagesProps) => {
       }
     )
 
-  const messages = data?.pages.flatMap(
-    (page) => page.messages
+  const messages= data?.pages.flatMap(
+    (page:any) => page.messages
   )
 
   const loadingMessage = {
@@ -43,7 +44,7 @@ const Messages = ({ fileId }: MessagesProps) => {
     ),
   }
 
-  const combinedMessages = [
+  const combinedMessages= [
     ...(isAiThinking ? [loadingMessage] : []),
     ...(messages ?? []),
   ]

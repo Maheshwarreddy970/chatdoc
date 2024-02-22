@@ -21,7 +21,7 @@ export const POST = async (req: NextRequest) => {
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,
     })
-    const res=await PineconeStore.fromDocuments(
+   await PineconeStore.fromDocuments(
       pageLevelDocs,
       embeddings,
       {

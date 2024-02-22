@@ -6,4 +6,6 @@ export const FileuploadInput=z.object({
     url: z.string(),
   })
 
-  export type FileuploadType = z.infer<typeof FileuploadInput>;
+export type FileuploadType = z.infer<typeof FileuploadInput>;
+
+

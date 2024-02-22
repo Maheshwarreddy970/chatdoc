@@ -7,6 +7,7 @@ import { NextRequest } from 'next/server'
 import { pinecone } from '@/lib/pinecone'
 import { openai } from '@/lib/opeanai'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
+import {MessageType} from "@repo/trpc/types"
 
 
 export const POST = async (req:NextRequest) => {
@@ -65,21 +66,12 @@ export const POST = async (req:NextRequest) => {
     4
   )
 
-  interface Message {
-    id: string;
-    text: string;
-    isUserMessage: boolean;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string | null;
-    fileId: string | null;
-  }
   
 
-  
+
   // Update the map function using the Message interface
   
-  const prevMessages:Message[] = await db.message.findMany({
+  const prevMessages:MessageType[]= await db.message.findMany({
     where: {
       fileId,
     },
@@ -95,7 +87,7 @@ export const POST = async (req:NextRequest) => {
   }
   
   // Usage:
-  const formattedPrevMessages: FormattedMessage[] = prevMessages.map((msg:Message) => ({
+  const formattedPrevMessages: FormattedMessage[] = prevMessages.map((msg:MessageType) => ({
     role: msg.isUserMessage ? 'user' : 'assistant',
     content: msg.text,
   }));
