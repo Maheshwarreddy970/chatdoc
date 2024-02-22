@@ -23,5 +23,12 @@ export const UserInput=z.object({
 
 export type UserType = z.infer<typeof UserInput>;
 
-
+const MessageInputType = z.object({
+    id: z.string(),
+    createdAt: z.string(), // Adjust as per your actual schema
+    text: z.string(),
+    isUserMessage: z.boolean(),
+  });
+  
+  export type MessageInputType = z.infer<typeof MessageInputType>;
 
