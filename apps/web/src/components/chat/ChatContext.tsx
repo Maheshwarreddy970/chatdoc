@@ -8,6 +8,8 @@ import { useToast } from '@repo/ui/ui'
 import { useMutation } from '@tanstack/react-query'
 import { trpc } from '@/app/_trpc/client'
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query'
+import { MessageInputType } from '@repo/trpc/types'
+
 
 type StreamResponse = {
   addMessage: () => void
@@ -153,7 +155,7 @@ export const ChatContextProvider = ({
             let isAiResponseCreated = old.pages.some(
               (page) =>
                 page.messages.some(
-                  (message) => message.id === 'ai-response'
+                  (message:MessageInputType) => message.id === 'ai-response'
                 )
             )
 
