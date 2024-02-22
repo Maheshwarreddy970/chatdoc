@@ -175,7 +175,7 @@ export const ChatContextProvider = ({
                   ]
                 } else {
                   updatedMessages = page.messages.map(
-                    (message) => {
+                    (message:MessageInputType) => {
                       if (message.id === 'ai-response') {
                         return {
                           ...message,
