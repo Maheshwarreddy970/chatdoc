@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push --skip-generate",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db-push:hard": "cp .env prisma/.env && yarn prisma db push --accept-data-loss"
+    "db-push:hard": "cp .env prisma/.env && yarn prisma db push --accept-data-loss",
+    "db:migrate": "prisma migrate dev --name init"
   },
   "keywords": [],
   "author": "",
