@@ -5,24 +5,22 @@
   "globalEnv": ["NODE_ENV","DATABASE_URL"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^db:generate"],
+      "dependsOn": ["^generate"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "env": [
         "DATABASE_URL"
       ]
     },
     "web#build": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^db:generate","^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
       "env": [
-        ""
+        "DATABASE_URL"
       ]
     },
     "lint": {},
     "type-check": {},
     "dev": {
-      "dependsOn": ["^db:generate"],
       "cache": false
     },
     "clean": {
@@ -31,15 +29,21 @@
     "vercel-deploy": {
       "dependsOn": ["^build"],
       "env": [
+        "DATABASE_URL"
       ],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
-    "db:generate": {
-      "cache": false
+    "db:migrate:deploy": {
+      "outputs": []
     },
     "db:push": {
-      "cache": false
+      "outputs": []
+    },
+    "db:seed": {
+      "outputs": []
+    },
+    "generate": {
+      "dependsOn": ["^generate"]
     }
-
   }
 }
