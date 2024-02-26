@@ -29,21 +29,14 @@
     "vercel-deploy": {
       "dependsOn": ["^build"],
       "env": [
-        "DATABASE_URL"
       ],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
-    "db:migrate:deploy": {
-      "outputs": []
+    "db:generate": {
+      "cache": false
     },
     "db:push": {
-      "outputs": []
-    },
-    "db:seed": {
-      "outputs": []
-    },
-    "generate": {
-      "dependsOn": ["^generate"]
+      "cache": false
     }
   }
 }
