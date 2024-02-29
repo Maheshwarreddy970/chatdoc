@@ -6,7 +6,6 @@
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
-    "db:migrate": "dotenv -e ./env -- turbo db:migrate",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {

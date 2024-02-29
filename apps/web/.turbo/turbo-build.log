@@ -17,13 +17,13 @@ Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
    Collecting build traces ...
 
 Route (app)                              Size     First Load JS
-┌ λ /                                    4.16 kB         118 kB
+┌ λ /                                    4.24 kB         118 kB
 ├ λ /_not-found                          881 B          85.2 kB
 ├ λ /api/auth/[kindeAuth]                0 B                0 B
 ├ λ /api/fileindex                       0 B                0 B
 ├ λ /api/message                         0 B                0 B
 ├ λ /api/trpc/[trpc]                     0 B                0 B
-├ λ /auth-callback                       910 B           104 kB
+├ λ /auth-callback                       893 B           104 kB
 ├ λ /dashboard                           102 kB          245 kB
 ├ λ /dashboard/[feild]                   177 kB          340 kB
 ├ λ /signin                              647 B          89.9 kB

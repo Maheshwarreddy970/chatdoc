@@ -5,14 +5,14 @@
   "globalEnv": ["NODE_ENV","DATABASE_URL"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^db:generate"],
+      "dependsOn": ["^db:push","^db:migrate","^db:generate"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "env": [
         "DATABASE_URL"
       ]
     },
     "web#build": {
-      "dependsOn": ["^db:generate","^build"],
+      "dependsOn": ["^db:push","^db:migrate","^db:generate"],
       "outputs": [".next/**", "!.next/cache/**"],
       "env": [
         "DATABASE_URL"
@@ -21,7 +21,7 @@
     "lint": {},
     "type-check": {},
     "dev": {
-      "dependsOn": ["^db:generate"],
+      "dependsOn": ["^db:migrate","^db:push","^db:generate"],
       "cache": false
     },
     "clean": {
@@ -34,6 +34,9 @@
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "db:generate": {
+      "cache": false
+    },
+    "db:migrate": {
       "cache": false
     },
     "db:push": {

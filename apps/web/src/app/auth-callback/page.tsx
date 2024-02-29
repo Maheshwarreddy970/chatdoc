@@ -18,7 +18,6 @@ const Page = () => {
   useEffect(() => {
     // Additional client-side logic can be added here if needed
   }, []); // Empty dependency array ensures the effect runs only once on mount
-console.log()
   if (!router) {
     // Return loading state if router is not available (during prerendering)
     return (
