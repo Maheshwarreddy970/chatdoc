@@ -28,7 +28,7 @@ export default function Home () {
             size: 'lg',
             className: 'mt-5 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800',
           })}
-          href='/dashboard'
+          href='/auth-callback?origin=dashboard'
           target='_blank'>
           Get started{' '}
           <ArrowRight className='ml-2 h-5 w-5' />
