@@ -17,8 +17,6 @@ export type MessageType = z.infer<typeof MessageInput>;
 export const UserInput=z.object({
     id: z.string(),
     email: z.string(),
-    name: z.string(),
-    password: z.string().nullable(),
 })
 
 export type UserType = z.infer<typeof UserInput>;

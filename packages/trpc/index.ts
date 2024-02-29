@@ -25,7 +25,6 @@ export const appRouter = router({
         email: user.email,
       },
     })
-    console.log(user,dbUser?.email)
     if (!dbUser) {
       // create user in db
       await db.user.create({
