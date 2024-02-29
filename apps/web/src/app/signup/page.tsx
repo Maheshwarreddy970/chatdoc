@@ -9,11 +9,6 @@ import Image from 'next/image'
 
 
 
-type Inputs = {
-    email: string
-    name: string
-    password: string
-}
 
 
 export default function page() {
