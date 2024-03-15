@@ -28,14 +28,17 @@ Make sure to fill in the necessary environment variables in the .env file.
 Install Dependencies
 bash
 Copy code
+```bash
 yarn install
+```
 Development
 To start the development server:
 
 bash
 Copy code
+```bash
 yarn dev
-This will run the application in development mode.
+```This will run the application in development mode.
 
 Contributing
 Contributions are welcome! Please check out our Contribution Guidelines.
