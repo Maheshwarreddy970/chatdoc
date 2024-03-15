@@ -1,5 +1,4 @@
-![logo](apps/web/public/sketch1704618933812two - Copy.png)
-# Chatdoc
+![logo](./apps/web/public/sketch1704618933812two%20-%20Copy.png)# Chatdoc
 
 
 ## Introduction
