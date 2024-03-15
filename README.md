@@ -1,7 +1,6 @@
-![Image Description](apps/web/public/sketch1704618933812two - Copy.png)
+![logo](apps/web/public/sketch1704618933812two - Copy.png)
 # Chatdoc
 
-# ChatDoc
 
 ## Introduction
 
@@ -14,7 +13,7 @@ To get started with ChatDoc, follow these steps:
 ### Clone the Repository
 
 ```bash
-git clone git@github.com:coral-xyz/chatdoc.git
+git clone git@github.com:Maheshwarreddy970/chatdoc.git
 cd chatdoc
 Environment Variables
 Before running the application, you may need to set up environment variables.
