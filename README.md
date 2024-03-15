@@ -1,4 +1,4 @@
-![logo](./apps/web/public/sketch1704618933812two%20-%20Copy.png)# Chatdoc
+<img src="apps/web/public/sketch1704618933812two - Copy.png" alt="logo" width="200" height="200">
 
 
 ## Introduction
