@@ -1,6 +1,6 @@
 'use client'
 
-import {useState } from 'react'
+import { useState } from 'react'
 import {
   Dialog,
   DialogContent,
@@ -14,6 +14,7 @@ import Dropzone from 'react-dropzone'
 import { Cloud, Loader2, File } from 'lucide-react'
 import { trpc } from '@/app/_trpc/client'
 import { useRouter } from 'next/navigation'
+import { MovingButton } from './moving-border'
 
 
 
@@ -38,7 +39,7 @@ const UploadDropzone = () => {
       await fetch("api/fileindex", {
         method: "POST",
         body: JSON.stringify({
-          createdFile:data
+          createdFile: data
         }),
         headers: {
           "content-type": "application/json",
@@ -63,6 +64,7 @@ const UploadDropzone = () => {
     return interval
   }
   return (
+    <div>
     <Dropzone
       multiple={false}
       onDrop={async (acceptedFile: any) => {
@@ -72,9 +74,9 @@ const UploadDropzone = () => {
         if (acceptedFile.size > 10 * 1024 * 1024) {
           // bigger than 10mb!
           return toast({
-            title:"file is lagre in size",
-            description:"upload file less then 10mb",
-            variant:"destructive"
+            title: "file is lagre in size",
+            description: "upload file less then 10mb",
+            variant: "destructive"
           });
         }
         // handle file uploading
@@ -161,6 +163,8 @@ const UploadDropzone = () => {
         </div>
       )}
     </Dropzone>
+    </div>
+
   )
 }
 
@@ -178,9 +182,13 @@ const UploadButton = () => {
       <DialogTrigger
         onClick={() => setIsOpen(true)}
         asChild>
-        <Button className='bg-gradient-to-br sm:w-48 from-green-400 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg'>Upload PDF</Button>
+        <MovingButton
+          borderRadius="1.75rem"
+          className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+        >
+          Upload PDF        
+          </MovingButton>
       </DialogTrigger>
-
       <DialogContent>
         <UploadDropzone />
       </DialogContent>

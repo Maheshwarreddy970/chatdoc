@@ -11,6 +11,7 @@ import {
 import Image from 'next/image'
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/server'
 import { LogOut } from 'lucide-react'
+import Link from 'next/link'
 
 interface UserAccountNavProps {
   email: string | undefined
@@ -23,7 +24,7 @@ const UserAccountNav = async ({
   imageUrl,
   name,
 }: UserAccountNavProps) => {
-  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -47,8 +48,16 @@ const UserAccountNav = async ({
               </AvatarFallback>
             )}
           </Avatar>
+
         </Button>
       </DropdownMenuTrigger>
+      <Link
+      href="/dashboard"
+      >
+      <button className="px-4 py-2 rounded-md border border-black bg-white text-neutarl-700 text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">
+        Dashboard
+      </button>
+      </Link>
 
       <DropdownMenuContent className='bg-white' align='end'>
         <div className='flex items-center justify-start gap-2 p-2'>
@@ -70,7 +79,7 @@ const UserAccountNav = async ({
         <DropdownMenuSeparator />
 
         <DropdownMenuItem className='w-full cursor-pointer '>
-            <LogoutLink className='w-full text-red-700 flex justify-between'><span>Log out</span> <LogOut className='w-4  text-red-700 h-4'></LogOut></LogoutLink>
+          <LogoutLink className='w-full text-red-700 flex justify-between'><span>Log out</span> <LogOut className='w-4  text-red-700 h-4'></LogOut></LogoutLink>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

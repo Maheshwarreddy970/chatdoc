@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { MaxWidthWrapper,buttonVariants } from '@repo/ui/ui'
+import { MaxWidthWrapper, buttonVariants } from '@repo/ui/ui'
 import {
   LoginLink,
   RegisterLink,
@@ -21,25 +21,24 @@ const Navbar = async () => {
           <Link
             href='/dashboard'
             className='flex justify-center z-40 font-semibold'>
-              <Image src={logo} alt="logo" className='h-11 w-11 hover:animate-spin'></Image>
+            <Image src={logo} alt="logo" className='h-11 w-11 hover:animate-spin'></Image>
           </Link>
 
           <div className='items-center space-x-4 sm:flex'>
             {!user ? (
               <>
-                <LoginLink
-                  className={buttonVariants({
-                    variant: 'ghost',
-                    size: 'sm',
-                  })}>
-                  Sign in
+                <LoginLink>
+                  <button className=" flex px-4 py-2 rounded-md border border-black bg-white text-neutarl-700 text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">
+                    Log in {' '}
+                    <ArrowRight className='ml-1.5 h-5 w-5' />
+
+                  </button>
                 </LoginLink>
-                <RegisterLink
-                  className={buttonVariants({
-                    className:'bg-gradient-to-r from-slate-500 to-slate-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-slate-300 dark:focus:ring-slate-800 text-xs sm:text-sm'
-                  })}>
-                  Sign in{' '}
-                  <ArrowRight className='ml-1.5 h-5 w-5' />
+                <RegisterLink>
+                  <button className="flex px-4 py-2 rounded-md border border-black bg-white text-neutarl-700 text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">
+                    Join now {' '}
+                    <ArrowRight className='ml-1.5 h-5 w-5' />
+                  </button>
                 </RegisterLink>
               </>
             ) : (
