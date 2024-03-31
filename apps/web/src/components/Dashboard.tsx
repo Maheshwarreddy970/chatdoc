@@ -54,7 +54,7 @@ const Dashboard = () => {
 
 
   return (
-    <main className='mx-auto max-w-7xl md:p-10'>
+    <main className='mx-auto w-full md:p-10'>
       <div className='mt-8 -mb-24 w-full flex  gap-4 justify-between border-b border-gray-200 pb-5 flex-row items-center sm:gap-0'>
         <TypewriterEffect className='mt-4 sm:mt-0' words={words}></TypewriterEffect>
         <div className='flex justify-end'>
@@ -72,14 +72,14 @@ const Dashboard = () => {
                 new Date(a.createdAt).getTime()
             )
             .map((file: FileType,index:number) => (
-              <div key={index} >
-                <Link
-                  href={`/dashboard/${file.id}`}>
+              <li key={index}>
                   <div className="h-[40rem] w-full flex items-center justify-center ">
                     <PinContainer
                       title={file.name}
                       href={`/dashboard/${file.id}`}
                     >
+                <Link
+                  href={`/dashboard/${file.id}`}>
                       <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
                         <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-zinc-900">
                           {file.name}
@@ -89,8 +89,9 @@ const Dashboard = () => {
                             Customizable Tailwind CSS and Framer Motion Components.
                           </span>
                         </div>
-                        <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
+                        <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-amber-500 to-pink-500" />
                       </div>
+                  </Link>
 
                       <div className='px-6 mt-4 grid grid-cols-3 place-items-center py-2 gap-6 text-xs text-zinc-500'>
                         <div className='flex items-center gap-2'>
@@ -123,14 +124,13 @@ const Dashboard = () => {
 
                     </PinContainer>
                   </div>
-                </Link>
-              </div>
+              </li>
             ))}
         </ul>
       ) : isLoading ? (
         <Skeleton height={100} className='my-2' count={3} />
       ) : (
-        <div className='mt-16 flex flex-col items-center gap-2 '>
+        <div className='mt-52 flex flex-col items-center gap-2 '>
           <Ghost className='h-8 w-8 text-black' />
           <h3 className='text-black'>
             Not much activity around here
