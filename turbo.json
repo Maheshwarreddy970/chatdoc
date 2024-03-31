@@ -5,7 +5,6 @@
   "globalEnv": ["NODE_ENV","DATABASE_URL"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^db:push","^db:migrate","^db:generate"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "env": [
         "DATABASE_URL"
