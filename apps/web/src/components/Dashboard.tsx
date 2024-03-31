@@ -71,8 +71,8 @@ const Dashboard = () => {
                 new Date(b.createdAt).getTime() -
                 new Date(a.createdAt).getTime()
             )
-            .map((file: FileType) => (
-              <li>
+            .map((file: FileType,index:number) => (
+              <div key={index} >
                 <Link
                   href={`/dashboard/${file.id}`}>
                   <div className="h-[40rem] w-full flex items-center justify-center ">
@@ -124,7 +124,7 @@ const Dashboard = () => {
                     </PinContainer>
                   </div>
                 </Link>
-              </li>
+              </div>
             ))}
         </ul>
       ) : isLoading ? (
