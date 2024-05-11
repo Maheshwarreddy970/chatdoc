@@ -3,6 +3,8 @@ $ next build
    - Environments: .env.local
 
    Creating an optimized production build ...
+ ⚠ For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'npm i sharp', and Next.js will use it automatically for Image Optimization.
+Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
 
 [1m[33mwarn[39m[22m - As of Tailwind CSS v2.2, `lightBlue` has been renamed to `sky`.
 [1m[33mwarn[39m[22m - Update your configuration file to silence this warning.
@@ -36,20 +38,20 @@ info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/d
 
 Route (app)                              Size     First Load JS
 ┌ λ /                                    7.12 kB         145 kB
-├ λ /_not-found                          886 B          85.4 kB
+├ λ /_not-found                          886 B          85.3 kB
 ├ λ /api/auth/[kindeAuth]                0 B                0 B
 ├ λ /api/fileindex                       0 B                0 B
 ├ λ /api/message                         0 B                0 B
 ├ λ /api/trpc/[trpc]                     0 B                0 B
-├ λ /auth-callback                       900 B           104 kB
+├ λ /auth-callback                       901 B           104 kB
 ├ λ /dashboard                           105 kB          295 kB
-├ λ /dashboard/[feild]                   177 kB          340 kB
+├ λ /dashboard/[feild]                   176 kB          339 kB
 ├ λ /signin                              649 B          90.1 kB
 └ λ /signup                              1.63 kB        91.1 kB
 + First Load JS shared by all            84.5 kB
   ├ chunks/1dd3208c-2cc87533b74ca978.js  53.4 kB
   ├ chunks/997-d394879a4f320830.js       29.1 kB
-  └ other shared chunks (total)          2.01 kB
+  └ other shared chunks (total)          2 kB
 
 
 λ  (Dynamic)  server-rendered on demand using Node.js

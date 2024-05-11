@@ -6,11 +6,12 @@ import {
   DropdownMenuTrigger,
   Button,
   Icons,
-  Avatar, AvatarFallback
+  Avatar, AvatarFallback,
+  TopLightButton
 } from '@repo/ui/ui'
 import Image from 'next/image'
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/server'
-import { LogOut } from 'lucide-react'
+import { ArrowRight, LogOut } from 'lucide-react'
 import Link from 'next/link'
 
 interface UserAccountNavProps {
@@ -30,8 +31,8 @@ const UserAccountNav = async ({
       <DropdownMenuTrigger
         asChild
         className='overflow-visible'>
-        <Button className='rounded-full h-8 w-8 aspect-square bg-slate-400'>
-          <Avatar className='relative w-8 h-8'>
+        <Button className='rounded-full h-9 w-9 aspect-square bg-slate-400'>
+          <Avatar className='relative h-9 w-9'>
             {imageUrl ? (
               <div className='relative aspect-square h-full w-full'>
                 <Image
@@ -54,9 +55,7 @@ const UserAccountNav = async ({
       <Link
       href="/dashboard"
       >
-      <button className="px-4 py-2 rounded-md border border-black bg-white text-neutarl-700 text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">
-        Dashboard
-      </button>
+      <TopLightButton word={"Dashboard"}><ArrowRight size={"17px"}></ArrowRight></TopLightButton>
       </Link>
 
       <DropdownMenuContent className='bg-white' align='end'>
