@@ -47,7 +47,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
           )}>
           <div
             className={cn(
-              'px-4 py-2 rounded-lg inline-block',
+              'px-3 py-2 rounded-full inline-block',
               {
                 'bg-slate-900 text-white':
                   message.isUserMessage,

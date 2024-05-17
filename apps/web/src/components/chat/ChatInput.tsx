@@ -22,7 +22,7 @@ const ChatInput = ({ isDisabled }: ChatInputProps) => {
       <div className='mx-2 flex flex-row gap-3 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl'>
         <div className='relative flex h-full flex-1 items-stretch md:flex-col'>
           <div className='relative flex flex-col w-full flex-grow p-4'>
-            <div className='relative'>
+            <div className='relative group'>
               <Textarea
                 rows={1}
                 ref={textareaRef}
@@ -39,19 +39,19 @@ const ChatInput = ({ isDisabled }: ChatInputProps) => {
                   }
                 }}
                 placeholder='Ask me anything...'
-                className='resize-none pr-12 text-base py-3 scrollbar-thumb-black scrollbar-thumb-rounded scrollbar-track-black-lighter scrollbar-w-2 scrolling-touch'
+                className='resize-none pr-12  text-base py-3 scrollbar-thumb-black scrollbar-thumb-rounded scrollbar-track-black-lighter scrollbar-w-2 scrolling-touch'
               />
 
               <Button
                 disabled={isLoading || isDisabled}
-                className='absolute bottom-1.5 right-[8px]  hover:text-white bg-white hover:bg-black'
+                className='absolute bottom-1.5 right-[8px] bg-slate-100 hover:text-white group-hover:bg-black'
                 aria-label='send message'
                 onClick={() => {
                   addMessage()
 
                   textareaRef.current?.focus()
                 }}>
-                <Send size={48} strokeWidth={1.75} className='text-black h-4 w-4 hover:text-white' />
+                <Send size={48} strokeWidth={1.75} className='text-black/30 h-4 w-4 transition-all group-hover:rotate-45 group-hover:duration-500 group-hover:text-white' />
               </Button>
             </div>
           </div>

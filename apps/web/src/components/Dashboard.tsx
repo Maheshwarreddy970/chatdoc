@@ -16,7 +16,6 @@ import { Button } from '@repo/ui/ui'
 import { useState } from 'react'
 import { deletefroms3 } from "@/lib/s3"
 import { FileType } from '@repo/trpc/types'
-import { PinContainer } from './3d-pin'
 import { GradualSpacing } from '../../../../packages/ui/src/components/TextGradualSpacing';
 import { Filecard } from '@repo/ui/ui'
 
@@ -68,7 +67,7 @@ const Dashboard = () => {
             )
             .map((file: FileType, index: number) => (
               <>
-                <Filecard>
+                <Filecard file={file}>
                   <div className=''>
                     <div className='flex text-black  justify-between my-6'>
                       <div className='flex items-center gap-2'>

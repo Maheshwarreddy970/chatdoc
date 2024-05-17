@@ -4,12 +4,23 @@
 
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import { ReactElement } from "react";
+import Link from 'next/link';
 
-type props={
-    children:ReactElement
+type props = {
+  children: ReactElement,
+  file: {
+    userId: string | null;
+    id: string;
+    key: string;
+    name: string;
+    url: string;
+    uploadStatus: "PENDING" | "PROCESSING" | "FAILED" | "SUCCESS";
+    createdAt: string;
+    updatedAt: string;
+  }
 }
 
-export function Filecard({children}:props) {
+export function Filecard({ children, file }: props) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -25,7 +36,7 @@ export function Filecard({children}:props) {
     >
       <div className="absolute right-5 top-0 h-px w-80 bg-gradient-to-l from-transparent via-white/30 via-10% to-transparent" />
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+        className="-inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
 						radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(113, 227, 255, 0.45), transparent 80%)
@@ -34,8 +45,11 @@ export function Filecard({children}:props) {
       />
       <div className="relative flex flex-col gap-3 rounded-xl border border-white/10 px-6 py-7">
         <div className="space-y-2">
-          <div className="h-52 shadow-inner shadow-white  w-full rounded-lg bg-gradient-to-r from-indigo-400 to-cyan-400">
-          </div>
+          <Link
+            href={`/dashboard/${file.id}`}>
+            <div className="h-52 shadow-inner shadow-white  w-full rounded-lg bg-gradient-to-r from-indigo-400 to-cyan-400">
+            </div>
+          </Link>
           {children}
         </div>
       </div>

@@ -9,13 +9,14 @@ import UserAccountNav from './UserAccountNav'
 import Image from 'next/image'
 import logo from "../../public/sketch1704618933812two - Copy.png"
 import { TopLightButton } from '@repo/ui/ui'
+import { cn } from '@/lib/utils'
 
 const Navbar = async () => {
   const { getUser } = getKindeServerSession()
   const user = await getUser()
 
   return (
-    <nav className=' fixed px-60 z-50 top-8  h-14 w-full'>
+    <nav className={cn(' fixed px-60 z-50 top-3  h-14 w-full')}>
         <div className='border border-white/40 flex items-center px-5 justify-between  h-full backdrop-blur-lg shadow-inner py-1  shadow-black/30 rounded-md bg-black/10'>
           <Link
             href='/dashboard'
