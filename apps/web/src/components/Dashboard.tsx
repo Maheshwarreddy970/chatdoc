@@ -66,7 +66,7 @@ const Dashboard = () => {
                 new Date(a.createdAt).getTime()
             )
             .map((file: FileType, index: number) => (
-              <>
+              <div key={index}>
                 <Filecard file={file}>
                   <div className=''>
                   <div className='flex justify-center '>
@@ -103,7 +103,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </Filecard>
-              </>
+              </div>
             ))}
         </ul>
       ) : (

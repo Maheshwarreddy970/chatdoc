@@ -119,10 +119,10 @@ export const MainContainerScroll = ({
         <Card rotate={rotate} translate={translate} scale={scale}>
           <div className=" bg-[url('/backgroundimage.jpg')] overflow-hidden  w-full h-full bg-cover backdrop-blur-2xl px-2 lg:p-0 lg:pt-16">
             {
-              message.map((data) => (
-                <>
+              message.map((data,index) => (
+                <div key={index}>
                   {data}
-                </>
+                </div>
               ))
             }
           </div>
