@@ -33,7 +33,7 @@ const message = [
   <motion.div 
   initial={{x:120,opacity:0}}
   animate={{x:0,opacity:1}}
-  transition={{duration:0.5,delay:4,type:'spring',stiffness:'200'}}
+  transition={{duration:0.5,delay:3,type:'spring',stiffness:'200'}}
   className=" flex justify-end">
     <span className=" border border-black shadow-lg mt-4 sm:mt-0 bg-white w-auto  py-2 px-3   text-right   rounded-lg">
     Give me five points to improve in my resume
@@ -46,7 +46,7 @@ const message = [
   <motion.div 
   initial={{x:-120,opacity:0}}
   animate={{x:0,opacity:1}}
-  transition={{duration:0.5,delay:5,type:'spring',stiffness:'200'}}
+  transition={{duration:0.5,delay:4,type:'spring',stiffness:'200'}}
   className="border text-base flex flex-col gap-3 mt-4 shadow-lg text-white  bg-black w-auto  py-3 px-5 text-left   rounded-lg">
     <div  className=" mb-2">Sure, here are five key points to improve your resume:</div>
     <div>

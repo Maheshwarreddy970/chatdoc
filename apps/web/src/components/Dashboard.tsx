@@ -18,7 +18,6 @@ import { deletefroms3 } from "@/lib/s3"
 import { FileType } from '@repo/trpc/types'
 import { GradualSpacing } from '../../../../packages/ui/src/components/TextGradualSpacing';
 import { Filecard } from '@repo/ui/ui'
-import { clsx } from 'clsx';
 
 const Dashboard = () => {
   const [currentlyDeletingFile, setCurrentlyDeletingFile] =
