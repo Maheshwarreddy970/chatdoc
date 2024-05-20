@@ -6,6 +6,7 @@ import logo from "../../public/sketch1704618933812two - Copy.png"
 
 import { MainContainerScroll } from '../components/mainpagecontainer-scroll-animation';
 import StepComponent from "@/components/StepComponent";
+import { Usesofchatdocex } from "@/components/Usesofchatdoc";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         </MainContainerScroll>
       </div>
       <StepComponent></StepComponent>
+      <Usesofchatdocex></Usesofchatdocex>
     </>
   );
 }
