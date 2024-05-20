@@ -6,12 +6,12 @@ import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
 const message = [
   <motion.div
-  key={1}
-  initial={{x:120,opacity:0}}
-  animate={{x:0,opacity:1}}
-  transition={{duration:0.5,delay:1,type:'spring',stiffness:'200'}}
+    key={1}
+    initial={{ x: 120, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.5, delay: 1, type: 'spring', stiffness: '200' }}
 
-  className=" flex justify-end">
+    className=" flex justify-end">
     <span className=" mt-4 sm:mt-0 even:bg-black border border-black shadow-lg  bg-white w-auto flex justify-center even:text-white py-2 px-3  even:text-left text-right   rounded-lg">
       Hello
       <div className=' ml-4 text-xs select-none mt-4 w-full text-right'>
@@ -20,53 +20,54 @@ const message = [
     </span>
   </motion.div>,
   <motion.div
-  key={2}
-  initial={{x:-120,opacity:0}}
-  animate={{x:0,opacity:1}}
-  transition={{duration:0.5,delay:2,type:'spring',stiffness:'200'}}
-  className=" mt-4 sm:mt-0 flex justify-start">
+    key={2}
+    initial={{ x: -120, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.5, delay: 2, type: 'spring', stiffness: '200' }}
+    className=" mt-4 sm:mt-0 flex justify-start">
     <span className="  border   shadow-lg text-white  bg-black w-auto  py-2 px-3 text-right   rounded-lg">
-        Hello! How can I assist you today?
+      Hello! How can I assist you today?
       <div className=' mr-4  text-xs select-none mt-4 w-full text-right'>
         9:30
       </div>
     </span>
   </motion.div>,
-  <motion.div 
-  key={3}
-  initial={{x:120,opacity:0}}
-  animate={{x:0,opacity:1}}
-  transition={{duration:0.5,delay:3,type:'spring',stiffness:'200'}}
-  className=" flex justify-end">
+  <motion.div
+    key={3}
+    initial={{ x: 120, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.5, delay: 3, type: 'spring', stiffness: '200' }}
+    className=" flex justify-end">
     <span className=" border border-black shadow-lg mt-4 sm:mt-0 bg-white w-auto  py-2 px-3   text-right   rounded-lg">
-    Give me five points to improve in my resume
+      Give me five points to improve in my resume
       <div className=' ml-2 text-xs select-none mt-2 w-full text-right'>
         9:30
       </div>
     </span>
   </motion.div>,
 
-  <motion.div 
-  initial={{x:-120,opacity:0}}
-  animate={{x:0,opacity:1}}
-  transition={{duration:0.5,delay:4,type:'spring',stiffness:'200'}}
-  className="border text-base flex flex-col gap-3 mt-4 shadow-lg text-white  bg-black w-auto  py-3 px-5 text-left   rounded-lg">
-    <div  className=" mb-2">Sure, here are five key points to improve your resume:</div>
+  <motion.div
+    key={4}
+    initial={{ x: -120, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.5, delay: 4, type: 'spring', stiffness: '200' }}
+    className="border text-base flex flex-col gap-3 mt-4 shadow-lg text-white  bg-black w-auto  py-3 px-5 text-left   rounded-lg">
+    <div className=" mb-2">Sure, here are five key points to improve your resume:</div>
     <div>
       <span className="font-semibold">Quantifiable Achievements: </span>
       Highlight specific accomplishments with measurable results.</div>
     <div>
-    <span className="font-semibold"> Skills Section: </span>
-     Clearly outline your relevant technical and soft skills.
+      <span className="font-semibold"> Skills Section: </span>
+      Clearly outline your relevant technical and soft skills.
     </div>
     <div>
-    <span className="font-semibold"> Professional Summary:</span>
+      <span className="font-semibold"> Professional Summary:</span>
 
-       Craft a compelling summary that captures your expertise and career goals concisely.
+      Craft a compelling summary that captures your expertise and career goals concisely.
     </div>
     <div>
-    <span className="font-semibold">Action-Oriented Language: </span>
-       Use strong verbs and concise language to describe your accomplishments.
+      <span className="font-semibold">Action-Oriented Language: </span>
+      Use strong verbs and concise language to describe your accomplishments.
       Customization
     </div>
     <div className='text-xs select-none w-full text-right'>
@@ -119,15 +120,11 @@ export const MainContainerScroll = ({
         }}
       >
         <Header translate={translate} titleComponent={titleComponent} />
-        <Card rotate={rotate} translate={translate} scale={scale}>
-          <div className=" bg-[url('/backgroundimage.jpg')] overflow-hidden  w-full h-full bg-cover backdrop-blur-2xl px-2 lg:p-0 lg:pt-16">
-            {
-              message.map((data,index) => (
-                <div key={index}>
-                  {data}
-                </div>
-              ))
-            }
+        <Card key="card" rotate={rotate} translate={translate} scale={scale}>
+          <div className="bg-[url('/backgroundimage.jpg')] overflow-hidden w-full h-full bg-cover backdrop-blur-2xl px-2 lg:p-0 lg:pt-16">
+            {message.map((data, index) => (
+              <div key={index}>{data}</div>
+            ))}
           </div>
         </Card>
       </div>
