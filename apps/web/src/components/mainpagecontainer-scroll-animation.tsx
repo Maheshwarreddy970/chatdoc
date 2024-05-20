@@ -6,6 +6,7 @@ import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
 const message = [
   <motion.div
+  key={1}
   initial={{x:120,opacity:0}}
   animate={{x:0,opacity:1}}
   transition={{duration:0.5,delay:1,type:'spring',stiffness:'200'}}
@@ -19,6 +20,7 @@ const message = [
     </span>
   </motion.div>,
   <motion.div
+  key={2}
   initial={{x:-120,opacity:0}}
   animate={{x:0,opacity:1}}
   transition={{duration:0.5,delay:2,type:'spring',stiffness:'200'}}
@@ -31,6 +33,7 @@ const message = [
     </span>
   </motion.div>,
   <motion.div 
+  key={3}
   initial={{x:120,opacity:0}}
   animate={{x:0,opacity:1}}
   transition={{duration:0.5,delay:3,type:'spring',stiffness:'200'}}
