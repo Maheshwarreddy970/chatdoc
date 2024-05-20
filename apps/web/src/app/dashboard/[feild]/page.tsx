@@ -13,9 +13,8 @@ const Page = async ({ params }: PageProps) => {
   const { feild } = params
   const { getUser } = getKindeServerSession()
   const user = await getUser()
-
-  if (!user || !user.id)
-    redirect(`/auth-callback?origin=dashboard/${feild}`)
+  if (!user || !user.id){
+    redirect(`/auth-callback?origin=dashboard/${feild}`)}
   const file = await db.file.findFirst({
     where: {
       id: feild,

@@ -48,7 +48,6 @@ const UploadDropzone = () => {
       }).catch((e) => console.log(e));
     }
   });
-
   const startSimulatedProgress = () => {
     setUploadProgress(0)
 

@@ -13,6 +13,8 @@ interface MessageProps {
 
 const Message = forwardRef<HTMLDivElement, MessageProps>(
   ({ message, isNextMessageSamePerson }, ref) => {
+   
+
     return (
       <div
         ref={ref}
@@ -23,7 +25,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
           className={cn(
             'relative flex h-6 w-6 aspect-square items-center justify-center',
             {
-              'order-2 bg-slate-900 rounded-sm':
+              'order-2 rounded-full bg-slate-900 ':
                 message.isUserMessage,
               'order-1 rounded-sm':
                 !message.isUserMessage,
@@ -31,6 +33,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
             }
           )}>
           {message.isUserMessage ? (
+            
             <Icons.user className='fill-white text-zinc-200 h-3/4 w-3/4' />
           ) : (
             <Image src={logo} alt="logo" className='w-5 h-5' ></Image>
@@ -47,9 +50,9 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
           )}>
           <div
             className={cn(
-              'px-3 py-2 rounded-full inline-block',
+              'px-3 py-1 flex gap-4 border border-black shadow-lg rounded-lg',
               {
-                'bg-slate-900 text-white':
+                'bg-white text-black':
                   message.isUserMessage,
                 'bg-gray-200 text-slate-400':
                   !message.isUserMessage,
@@ -64,7 +67,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
             {typeof message.text === 'string' ? (
               <ReactMarkdown
                 className={cn('prose', {
-                  'text-zinc-50': message.isUserMessage,
+                  'text-black': message.isUserMessage,
                 })}>
                 {message.text}
               </ReactMarkdown>
@@ -74,10 +77,10 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
             {message.id !== 'loading-message' ? (
               <div
                 className={cn(
-                  'text-xs select-none mt-2 w-full text-right',
+                  'text-xs select-none mt-6 w-full text-right',
                   {
                     'text-zinc-500': !message.isUserMessage,
-                    'text-slate-300': message.isUserMessage,
+                    'text-black': message.isUserMessage,
                   }
                 )}>
                 {format(

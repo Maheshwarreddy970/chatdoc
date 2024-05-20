@@ -18,6 +18,7 @@ import { deletefroms3 } from "@/lib/s3"
 import { FileType } from '@repo/trpc/types'
 import { GradualSpacing } from '../../../../packages/ui/src/components/TextGradualSpacing';
 import { Filecard } from '@repo/ui/ui'
+import { clsx } from 'clsx';
 
 const Dashboard = () => {
   const [currentlyDeletingFile, setCurrentlyDeletingFile] =
@@ -49,7 +50,7 @@ const Dashboard = () => {
 
   return (
     <main className='mx-auto z-20 w-full md:p-10'>
-      <div className='mt-28 w-full flex px-10  gap-4 justify-between  border-b-2 shadow-lg border-stone-700  pb-3 flex-row items-center sm:gap-0'>
+      <div className='mt-28 w-full flex sm:px-10  px-2  justify-between  border-b-2 shadow-lg border-stone-700  pb-3 flex-row items-center sm:gap-0'>
         <GradualSpacing></GradualSpacing>
         <div className='flex justify-end'>
           <UploadButton />
@@ -58,7 +59,7 @@ const Dashboard = () => {
 
       {/* display all user files */}
       {files && files?.length !== 0 ? (
-        <ul className='mt-8 grid grid-cols-1 gap-6 divide-y divide-zinc-200 md:grid-cols-2 lg:grid-cols-3'>
+        <ul className='mt-8 grid justify-items-center grid-cols-1 gap-6 divide-y divide-zinc-200 md:grid-cols-2 lg:grid-cols-3'>
           {files
             .sort(
               (a: FileType, b: FileType) =>
@@ -69,7 +70,11 @@ const Dashboard = () => {
               <>
                 <Filecard file={file}>
                   <div className=''>
+                  <div className='flex justify-center '>
+                    <span className=' font-semibold text-center text-lg bg-gradient-to-r from-slate-900 to-slate-700 inline-block text-transparent bg-clip-text '>{file.name}</span>
+                  </div>
                     <div className='flex text-black  justify-between my-6'>
+
                       <div className='flex items-center gap-2'>
                         <Plus className='h-4 w-4' />
                         {format(

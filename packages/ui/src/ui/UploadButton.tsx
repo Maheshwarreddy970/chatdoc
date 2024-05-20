@@ -11,7 +11,7 @@ export function UploadFileButton() {
         </span>
     </span>
     <div
-        className="relative text-lg  z-10 flex gap-2 items-center px-7 py-4 rounded-full bg-gray-950/50 ring-1 ring-white/10 ">
+        className="relative text-xs sm:text-lg   z-10 flex gap-2 items-center px-7 py-4 rounded-full bg-gray-950/50 ring-1 ring-white/10 ">
         <span>Upload File</span>
         <span className=' duration-200 ease-in-out'><FilePlus2 size={20} /></span>
     </div>

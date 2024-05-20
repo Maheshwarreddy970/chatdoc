@@ -1,25 +1,18 @@
-"use client"
-
 import Dashboard from '@/components/Dashboard'
-import { motion } from "framer-motion";
+import { db } from '@repo/database/dbconnect'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { redirect } from 'next/navigation'
+import { UserType } from '@repo/trpc/types'
 
-const Page = () => {
-  return (
-    <motion.main
-      initial={{ opacity: 0.0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        delay: 0.3,
-        duration: 0.8,
-        ease: "easeInOut",
-      }}
-      className=" relative flex flex-col  items-center  justify-center top-0 bottom-0 left-0 right-0  h-full w-full "
-    >
-      <Dashboard />
-    </motion.main>
-  )
+const Page = async () => {
+  const { getUser } = getKindeServerSession()
+  const user = await getUser()
+  console.log(user)
+  if (!user|| !user.id){
+    redirect('/auth-callback?origin=dashboard')
+    }
+
+  return <Dashboard/>
 }
 
 export default Page
-
-

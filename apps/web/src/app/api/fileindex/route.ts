@@ -15,15 +15,14 @@ export const POST = async (req: NextRequest) => {
     //@ts-ignore
     const loader = new PDFLoader(blob)
     const pageLevelDocs = await loader.load()
-
     const pagesAmt = pageLevelDocs.length
     // vectorize and index entire document
     const pineconeIndex = pinecone.Index('chatdocai')
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,
     })
-
-   await PineconeStore.fromDocuments(
+console.log("hit")
+    const val=await PineconeStore.fromDocuments(
       pageLevelDocs,
       embeddings,
       {
@@ -40,6 +39,7 @@ export const POST = async (req: NextRequest) => {
       },
     })
   } catch (err) {
+    console.log(err)
     await db.file.update({
       data: {
         uploadStatus: 'FAILED',

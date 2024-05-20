@@ -16,15 +16,15 @@ const Navbar = async () => {
   const user = await getUser()
 
   return (
-    <nav className={cn(' fixed px-60 z-50 top-3  h-14 w-full')}>
+    <nav className={cn(' fixed lg:px-60 z-50 top-3  h-14 w-full')}>
         <div className='border border-white/40 flex items-center px-5 justify-between  h-full backdrop-blur-lg shadow-inner py-1  shadow-black/30 rounded-md bg-black/10'>
           <Link
-            href='/dashboard'
+            href='/'
             className='flex justify-center z-40 font-semibold'>
             <Image src={logo} alt="logo" className='h-11 w-11 hover:animate-spin'></Image>
           </Link>
 
-          <div className='items-center space-x-4 sm:flex'>
+          <div className='items-center space-x-4 flex'>
             {!user ? (
               <>
                 <LoginLink>
