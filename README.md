@@ -1,4 +1,4 @@
-<img src="apps/web/public/sketch1704618933812two - Copy.png" alt="logo" width="200" height="200">
+<img src="apps/web/public/sketch1704618933812two - Copy.png" alt="logo" width="100" height="100">
 
 # ChatDoc
 
@@ -10,31 +10,63 @@ ChatDoc is a [brief description of the project].
 
 To get started with ChatDoc, follow these steps:
 
-### Clone the Repository
+## Clone the Repository
 
 ```bash
 git clone git@github.com:Maheshwarreddy970/chatdoc.git
+```
+
+```bash
 cd chatdoc
 ```
 
-### Environment Variables
+## Environment Variables
 
-Before running the application, set up the environment variables. Rename .env.example to .env and set your own variables.
+Before running the application, set up the environment variables. Rename `.env.example to .env ` and set your own variables.
 
 ```bash
 mv .env.example .env
 nano .env  # (or use any text editor to modify .env)
 ```
 
+### .env.example
+
+Here is an example of the environment variables needed for the project. Replace the placeholder values with your actual credentials.
+
+```bash
+# Kinde configuration
+
+KINDE_CLIENT_ID=your_kinde_client_id
+KINDE_CLIENT_SECRET=your_kinde_client_secret
+KINDE_ISSUER_URL=https://your_kinde_issuer_url
+KINDE_SITE_URL=http://localhost:3000
+KINDE_POST_LOGOUT_REDIRECT_URL=http://localhost:3000
+KINDE_POST_LOGIN_REDIRECT_URL=http://localhost:3000/dashboard
+
+# OpenAI configuration
+
+OPENAI_API_KEY=your_openai_api_key
+
+# AWS S3 configuration
+
+NEXT_PUBLIC_S3_ACCESS_KEY_ID=your_aws_s3_access_key_id
+NEXT_PUBLIC_S3_BUCKET_NAME=your_aws_s3_bucket_name
+NEXT_PUBLIC_S3_SECRET_ACCESS_KEY=your_aws_s3_secret_access_key
+
+# Pinecone configuration
+
+PINECONE_KEY=your_pinecone_key
+```
+
 Make sure to fill in the necessary environment variables in the .env file.
 
-# Install Dependencies
+## Install Dependencies
 
 ```bash
 yarn install
 ```
 
-# Development
+## Development
 
 To start the development server:
 
@@ -44,9 +76,11 @@ yarn turbo dev or yarn dev
 
 This will run the application in development mode.
 
-# Chatdocrepo File Structure
+## Chatdocrepo File Structure
 
 ChatDoc uses a monorepo setup managed by Turborepo and includes a Next.js application. Below is an overview of the file structure:
+
+```bash
 
 chatdoc/
 ├── apps/
@@ -81,39 +115,14 @@ chatdoc/
 ├── package.json # Root package configuration
 ├── turbo.json # Turborepo configuration
 └── README.md # Project documentation
+```
 
-# .env.example
+## TRPC Configuration
 
-Here is an example of the environment variables needed for the project. Replace the placeholder values with your actual credentials.
-
-# Kinde configuration
-
-KINDE_CLIENT_ID=your_kinde_client_id
-KINDE_CLIENT_SECRET=your_kinde_client_secret
-KINDE_ISSUER_URL=https://your_kinde_issuer_url
-KINDE_SITE_URL=http://localhost:3000
-KINDE_POST_LOGOUT_REDIRECT_URL=http://localhost:3000
-KINDE_POST_LOGIN_REDIRECT_URL=http://localhost:3000/dashboard
-
-# OpenAI configuration
-
-OPENAI_API_KEY=your_openai_api_key
-
-# AWS S3 configuration
-
-NEXT_PUBLIC_S3_ACCESS_KEY_ID=your_aws_s3_access_key_id
-NEXT_PUBLIC_S3_BUCKET_NAME=your_aws_s3_bucket_name
-NEXT_PUBLIC_S3_SECRET_ACCESS_KEY=your_aws_s3_secret_access_key
-
-# Pinecone configuration
-
-PINECONE_KEY=your_pinecone_key
-
-# TRPC Configuration
-
-packages/trpc/src/config/trpc.ts
+`packages/trpc/src/config/trpc.ts`
 This file sets up and initializes the TRPC configuration.
 
+```bash
 import { createTRPCNext } from '@trpc/next';
 import { AppRouter } from '../routers/\_app';
 
@@ -125,16 +134,21 @@ url: '/api/trpc',
 },
 ssr: true,
 });
+```
 
-# packages/trpc/src/zod/index.ts
+`packages/trpc/src/zod/index.ts`
 
+```bash
 Zod schemas for validation.
 import { z } from 'zod';
+```
 
 export const exampleSchema = z.object({
 exampleField: z.string().min(1),
 });
 
-# `packages/trpc/src/index.ts`
+`packages/trpc/src/index.ts`
 
+```bash
 export \* from './config/trpc';
+```
