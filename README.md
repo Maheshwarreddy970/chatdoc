@@ -1,4 +1,4 @@
-<img src="apps/web/public/sketch1704618933812two - Copy.png" alt="logo" width="100" height="100">
+<img src="apps/web/public/sketch1704618933812two - Copy.png" alt="logo" width="200" height="200">
 
 # ChatDoc
 
